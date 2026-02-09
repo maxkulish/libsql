@@ -58,7 +58,7 @@ impl TokenType {
 }
 
 fn from_bytes(bytes: &[u8]) -> String {
-    unsafe { str::from_utf8_unchecked(bytes).to_owned() }
+    String::from_utf8_lossy(bytes).into()
 }
 
 include!(concat!(env!("OUT_DIR"), "/keywords.rs"));
